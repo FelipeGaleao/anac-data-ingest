@@ -36,7 +36,7 @@ services:
 
   # jupyter notebook for all-spark
   all-spark-notebook:
-    image: docker.io/jupyter/all-spark-notebook
+    image: jupyter-pyspark
     environment:
       - JUPYTER_ENABLE_LAB=yes
     command: [ "jupyter", "lab", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''" ]
