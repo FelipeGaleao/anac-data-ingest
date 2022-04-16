@@ -18,7 +18,8 @@ Atualmente, possuo um computador parrudo, mas não possuo créditos para utiliza
 
 ##  🔧🔨  Ferramentas necessárias para desenvolver
 - Git (Utilizado para versionamento do código)
-- Docker (Para montarmos subirmos o MySQL, bem como o sistema Medalha em ambiente diferente da máquina)
+- Docker (Para montarmos subirmos o Apache Spark, Apache Airflow e Jupyter)
+- Subscrição da Azure para armazenarmos o Blob Storage.
 
 ## 🆘 Como subir o ambiente?
 Para subir o ambiente de desenvolvimento é necessário ter as ferramentas instaladas, em seguida, gerar as chaves SSH para conseguir utilizar o GitHub ([veja esse tutorial](https://dev.to/dxwebster/como-conectar-ao-github-com-chaves-ssh-1i41)). Em seguida, siga os seguintes passos de execução.
