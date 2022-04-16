@@ -1,0 +1,36 @@
+FROM docker.io/bitnami/spark:3.2.1
+
+
+# Add dependency for hadoop-azure
+ENV SPARK_HOME /opt/bitnami/spark
+
+RUN curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/3.3.1/hadoop-azure-3.3.1.jar --output /opt/bitnami/spark/jars/hadoop-azure-3.3.1.jar &&\
+    curl https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/8.6.6/azure-storage-8.6.6.jar --output /opt/bitnami/spark/jars/azure-storage-8.6.6.jar &&\
+    curl https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util/11.0.7/jetty-util-11.0.7.jar --output /opt/bitnami/spark/jars/jetty-util-11.0.7.jar &&\
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/thirdparty/hadoop-shaded-guava/1.1.1/hadoop-shaded-guava-1.1.1.jar --output /opt/bitnami/spark/jars/hadoop-shaded-guava-1.1.1.jar &&\
+    curl https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar --output /opt/bitnami/spark/jars/httpclient-4.5.13.jar &&\
+    curl https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.13.1/jackson-databind-2.13.1.jars --output /opt/bitnami/spark/jars/jackson-databind-2.13.1.jars &&\
+    curl https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.13.1/jackson-core-2.13.1.jar --output /opt/bitnami/spark/jars/jackson-core-2.13.1.jar &&\
+    curl https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-util-ajax/11.0.7/jetty-util-ajax-11.0.7.jar --output /opt/bitnami/spark/jars/jetty-util-ajax-11.0.7.jar &&\
+    curl https://repo1.maven.org/maven2/org/wildfly/openssl/wildfly-openssl/2.2.0.Final/wildfly-openssl-2.2.0.Final.jar --output /opt/bitnami/spark/jars/wildfly-openssl-2.2.0.Final.jar &&\
+    curl https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-common/3.3.1/hadoop-common-3.3.1.jar --output /opt/bitnami/spark/jars/hadoop-common-3.3.1.jar &&\
+    curl https://repo1.maven.org/maven2/com/microsoft/azure/azure-keyvault-core/1.2.6/azure-keyvault-core-1.2.6.jar --output /opt/bitnami/spark/jars/azure-keyvault-core-1.2.6.jar
+
+USER 1001
+
+ENV \
+    AZURE_STORAGE_VER=8.6.6 \
+    HADOOP_AZURE_VER=3.3.1 \
+    JETTY_VER=11.0.7
+
+# Set JARS env
+ENV JARS=${SPARK_HOME}/jars/azure-storage-${AZURE_STORAGE_VER}.jar,${SPARK_HOME}/jars/hadoop-azure-${HADOOP_AZURE_VER}.jar,${SPARK_HOME}/jars/jetty-util-ajax-${JETTY_VER}.jar
+
+RUN echo "spark.jars ${JARS}" >> $SPARK_HOME/conf/spark-defaults.conf
+
+
+USER root
+COPY ./requirements.txt ./requirements.txt
+RUN pip3 install -r requirements.txt
+
+USER 1001
