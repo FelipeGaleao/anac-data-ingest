@@ -1,8 +1,11 @@
 
+
 # ANAC Data Ingest
 🗣📖 Este repositório contém o código fonte utilizado para desenvolver uma plataforma de dados que seja possível orquestrar a ingestão de dados (extração e carregamento) de microdados estatístico do transporte aéreo disponibilizado pela ANAC (Agência nacional de Aviação Cívil) e disponibilizar para futuro tratamento e consumo no Azure Datalake Gen2.
 
 ![Ingestão de dados sendo orquestrada pelo Apache Airflow ](https://i.imgur.com/30hqmcW.jpg)
+![Arquitetura que serviu como base](https://i0.wp.com/www.theseattledataguy.com/wp-content/uploads/2022/01/https___bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com_public_images_7b1cc394-c7be-46fc-a772-b78d02299fbb_1620x620.png?resize=1024%2C392&ssl=1)
+
 
 ### Tecnologias utilizadas:
 Para fazer com que o ambiente rodando Apache Airflow e Spark seja fácil de montar, recorremos ao Docker. As tecnologias utilizadas neste projeto foram:
