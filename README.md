@@ -1,7 +1,5 @@
 # ANAC Data Ingest
 
-# ANAC Data Ingest
-
 🗣📖 Este repositório contém o código fonte utilizado para desenvolver uma plataforma de dados que permita a ingestão de dados (extração e carregamento) de microdados estatístico do transporte aéreo disponibilizado pela ANAC (Agência nacional de Aviação Cívil) em um Datalake, neste caso, Azure Datalake Storage, para que venha ser consumido e tratado futuramente.
 
 ![https://i.imgur.com/30hqmcW.jpg](https://i.imgur.com/30hqmcW.jpg)
