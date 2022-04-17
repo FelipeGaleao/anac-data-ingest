@@ -8,6 +8,10 @@
 
 Para o desenvolvimento dessa plataforma, me baseei no diagrama acima. A presente solução visa conseguir fazer a ingestão dos dados até a camada RAW para que seja possível a etapa de tratamento. Utilizando o Apache Spark e o notebook é possível, embora como os arquivos não estejam no mesmo provedor, você terá um tempo maior para baixar o arquivo e executar o processamento localmente. Uma das soluções então seria utilizar uma camada de storage on-promise também.
 
+![cluster-architecture.png](https://github.com/cluster-apps-on-docker/spark-standalone-cluster-on-docker/raw/master/docs/image/cluster-architecture.png)
+
+Uma das grandes sacadas que pude aplicar, é poder fazer com que o JupyterLab interaja com o Cluster de Spark (aqui criado com dois Workers). Isso faz com que outras pessoas que consigam utilizar também a plataforma.
+
 ### Tecnologias utilizadas:
 
 Para fazer com que o ambiente rodando Apache Airflow e Spark seja fácil de montar, recorremos ao Docker. As tecnologias utilizadas neste projeto foram:
@@ -43,3 +47,8 @@ git clone git@github.com:FelipeGaleao/anac-data-ingest.git .
 ### Subir o container com o Apache Spark e Apache Airflow.
 
 Navegue até a pasta do Apache Spark, e execute o seguinte comando. Após concluir e subir o container, navegue até a pasta do Apache Airflow e execute novamente o comando para subir o container do Apache Airflow.
+
+```
+docker-compose up -d --build
+
+```
