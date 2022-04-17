@@ -17,8 +17,10 @@ with DAG(dag_id= "adi_anac_data_ingest",
          catchup=False) as dag:
     
     with TaskGroup(group_id='data_ingest') as data_ingest:
-        for year in range(2000, 2023):
+        for year in range(2000, 2001):
+## Loop to generate group to each year to be ingested 
             with TaskGroup(group_id=f'{year}') as month:
+                ## Loop to generate task for each month to be downloaded and ingest on Datalake
                 for month in range(1, 13):       
                     task_ingest = PythonOperator(task_id=f"{year}-{month}",
                                         python_callable=ingest.ingest_file_from_anac,
